@@ -22,6 +22,9 @@
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
+  "peerDependencies": {
+    "parcel": "^1.9.7"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/blueni/i18n-util.git"
