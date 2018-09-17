@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const os = require('os')
 const { spawn } = require('child_process')
 
@@ -11,6 +13,7 @@ function runCommand(command, args = [], options){
     options = Object.assign({
         env: process.env,
         stdio: [0, 1, 2],
+        cwd: __dirname,
     }, options)
     return new Promise((resolve, reject) => {
         spawn(cmd, args, options)

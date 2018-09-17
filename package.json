@@ -4,6 +4,9 @@
   "scripts": {
     "start": "node static-server.js"
   },
+  "bin": {
+      "i18n-util": "static-server.js"
+  },
   "author": "blueni",
   "license": "MIT",
   "devDependencies": {
