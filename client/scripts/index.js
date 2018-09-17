@@ -3,17 +3,14 @@ import Router from 'vue-router'
 import Vuex from 'vuex'
 import App from '../pages/app.vue'
 import components from '../components'
-import highlight from 'highlight.js'
 import parse5 from 'parse5'
 
 import '../styles/common.less'
-import 'highlight.js/styles/default.css'
 
 Vue.use(Router)
 Vue.use(Vuex)
 Vue.use(components)
 
-window.highlight = highlight
 window.parse5 = parse5
 const router = new Router({
     mode: 'hash',
