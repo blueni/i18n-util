@@ -1,11 +1,11 @@
 {
   "name": "i18n-util",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "start": "node static-server.js"
   },
   "bin": {
-      "i18n-util": "static-server.js"
+    "i18n-util": "static-server.js"
   },
   "author": "blueni",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "vuex": "^3.0.1"
   },
   "repository": {
-      "type": "git",
-      "url": "git+https://github.com/blueni/i18n-util.git"
+    "type": "git",
+    "url": "git+https://github.com/blueni/i18n-util.git"
   }
 }
