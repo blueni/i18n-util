@@ -13,9 +13,11 @@ export default {
         let nodes = []
         let noEndTagReg = /br|hr|img|meta|link/
         let notHtmlTagReg = /text|comment|document/
+        let nodeIndex = 0
         function _tags(node = {}){
             let childNodes = node.childNodes || []
             childNodes.forEach(item => {
+                item.nodeIndex = nodeIndex++
                 _tagStart(item)
                 nodes.push(item)
                 _tags(item)

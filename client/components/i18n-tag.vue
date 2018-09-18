@@ -1,5 +1,13 @@
 <template>
-    <span @click="clickHandle" class="html-tag" :class="{'html-text-tag': !!text.trim()}"><slot /></span>
+    <span 
+        @click="clickHandle" 
+        class="html-tag" 
+        :class="{
+            'html-text-tag': !!text.trim(),
+            'tag-selected': !!tagSelected,
+            'translate-finished': !!finished
+        }"
+    ><slot /></span>
 </template>
 
 <script>
@@ -10,6 +18,10 @@ export default {
         return {
             text: '',
         }
+    },
+
+    props: {
+        nodeIndex: Number,
     },
 
     computed: {
@@ -27,6 +39,39 @@ export default {
         },
         currentLang(){
             return this.$store.state.currentLang
+        },
+        tagSelected(){
+            let translates = this.translates
+            let text = this.text
+            let item
+            if(!text){
+                return false
+            }
+            for(let i=0;i<translates.length;i++){
+                item = translates[i]
+                if(item.text === text){
+                    return true
+                }
+            }
+            return false
+        },
+        finished(){
+            let translates = this.translates
+            let text = this.text
+            let langs = this.langs
+            let item
+            if(!text){
+                return false
+            }
+            for(let i=0;i<translates.length;i++){
+                item = translates[i]
+                if(item.text === text){
+                    return langs.reduce((prev, current) => {
+                        return item[prev] && item[current]
+                    })
+                }
+            }
+            return false
         },
     },
 
@@ -53,6 +98,7 @@ export default {
                 text,
                 edit: true,
                 prop: text,
+                nodeIndex: this.nodeIndex,
             }
             let langs = this.langs
             let currentLang = this.currentLang
@@ -68,7 +114,7 @@ export default {
                 }
             })
             translates.push(i18nData)
-            this.$store.commit('translates', translates)
+            this.$store.commit('translates', translates.sort((a, b) => a.nodeIndex - b.nodeIndex))
             this.$store.commit('currentText', text)
         }
     }

@@ -36,7 +36,11 @@ export default {
         childNodes.push(this.$slots.default)
 
         if(isTextTag){
-            return _h(I18nTag, childNodes)
+            return _h(I18nTag, {
+                props: {
+                    nodeIndex: node.nodeIndex,
+                },
+            }, childNodes)
         }
 
         return _h('span', {

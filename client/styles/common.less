@@ -167,8 +167,29 @@ html,body{
         color: #eaeaea;
         cursor: pointer;
 
+        &.tag-selected{
+            color: #ac0;
+            
+            &:before{
+                content: '✎ ';
+            }
+        }
+
+        &.translate-finished{
+            color: #0c0;
+            
+            &:before{
+                content: '√ ';
+            }
+        }
+
         &:hover{
             text-decoration: underline;
+        }
+            
+        &:before{
+            font-size: @normal;
+            display: inline;
         }
     }
 }
